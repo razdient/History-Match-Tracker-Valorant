@@ -1,16 +1,28 @@
 <?php
+session_start();
 include "../koneksi.php";
 
-$id = $_GET["id"];
+// Auth check
+if (!isset($_SESSION['id']) || $_SESSION['role'] != 'player') {
+    header("Location: ../login.php");
+    exit;
+}
 
-mysqli_query(
-    $conn,
-    "
+$id = $_SESSION['id'];
+
+if (!isset($_GET['id_match']) || !is_numeric($_GET['id_match'])) {
+    header("Location: matchhistory.php");
+    exit;
+}
+
+$matchId = intval($_GET['id_match']);
+
+// Hapus hanya jika match milik player ini (security check)
+mysqli_query($conn, "
     DELETE FROM matches
-    WHERE id='$id'
-    "
-);
+    WHERE id_match = '$matchId'
+    AND player_id  = '$id'
+");
 
-header(
- "Location: dashboard.php"
-);
+header("Location: matchhistory.php?success=Match+berhasil+dihapus");
+exit;
