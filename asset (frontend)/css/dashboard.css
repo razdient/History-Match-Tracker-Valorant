@@ -1,0 +1,122 @@
+/* Dashboard & Player specific styles — extends style.css */
+
+/* Win rate gauge ring */
+.winrate-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.winrate-ring svg { transform: rotate(-90deg); }
+
+.winrate-ring .ring-value {
+  position: absolute;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Match history special styles */
+.agent-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.agent-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.score-cell {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.score-k { color: var(--win-color); }
+.score-d { color: var(--accent-red); }
+.score-a { color: var(--accent-gold); }
+.score-sep { color: var(--text-muted); margin: 0 1px; }
+
+/* Action buttons in table */
+.action-btns {
+  display: flex;
+  gap: 6px;
+}
+
+/* Tambah match form */
+.form-page {
+  max-width: 680px;
+}
+
+.form-section-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Result radio buttons */
+.result-toggle {
+  display: flex;
+  gap: 12px;
+}
+
+.result-option {
+  flex: 1;
+  position: relative;
+}
+
+.result-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+}
+
+.result-option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  transition: all 0.18s;
+  text-transform: uppercase;
+}
+
+.result-option input[type="radio"]:checked + label.win-label {
+  border-color: var(--win-color);
+  color: var(--win-color);
+  background: rgba(0,196,180,0.08);
+}
+
+.result-option input[type="radio"]:checked + label.lose-label {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  background: var(--accent-red-dim);
+}
+
+.result-option label:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}

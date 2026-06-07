@@ -1,0 +1,288 @@
+/* ============================================
+   LOGIN & REGISTER PAGE STYLES
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap');
+
+:root {
+  --bg-primary:    #0a0b0e;
+  --bg-secondary:  #111318;
+  --bg-card:       #16191f;
+  --border:        #2a2d35;
+  --border-glow:   #00c4b4;
+  --accent:        #00c4b4;
+  --accent-dim:    rgba(0,196,180,0.12);
+  --accent-glow:   rgba(0,196,180,0.35);
+  --accent-red:    #ff4655;
+  --accent-red-dim:rgba(255,70,85,0.12);
+  --text-primary:  #e8eaf0;
+  --text-secondary:#8b909e;
+  --text-muted:    #4a4f5e;
+  --font-display:  'Orbitron', sans-serif;
+  --font-ui:       'Rajdhani', sans-serif;
+  --font-body:     'Inter', sans-serif;
+  --radius-sm:     4px;
+  --radius-md:     8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated background */
+.auth-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,196,180,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 30% 20%, rgba(255,70,85,0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0b0e 0%, #0d0f14 100%);
+}
+
+.auth-bg .grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,196,180,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,196,180,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.auth-bg .corner-decoration {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(0,196,180,0.12);
+}
+
+.auth-bg .corner-tl {
+  top: 40px; left: 40px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.auth-bg .corner-br {
+  bottom: 40px; right: 40px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Auth container */
+.auth-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand Header */
+.auth-brand {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.brand-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(0,196,180,0.3);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+  box-shadow: 0 0 30px rgba(0,196,180,0.15);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+}
+
+.brand-tagline {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* Auth Card */
+.auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
+.auth-card-header {
+  padding: 24px 28px 0;
+  border-bottom: none;
+}
+
+.auth-card-header h1 {
+  font-family: var(--font-ui);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.auth-card-header p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+.auth-card-body { padding: 24px 28px 28px; }
+
+/* Form elements */
+.form-group { margin-bottom: 18px; }
+
+.form-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.form-control {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px 10px 38px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,196,180,0.1);
+}
+
+.form-control::placeholder { color: var(--text-muted); }
+
+/* Submit Button */
+.btn-auth {
+  width: 100%;
+  padding: 11px;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+
+.btn-auth:hover {
+  background: #00d9c8;
+  box-shadow: 0 0 24px rgba(0,196,180,0.4);
+}
+
+.btn-auth:active { transform: scale(0.99); }
+
+/* Footer link */
+.auth-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+}
+
+.auth-footer a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.auth-footer a:hover { text-decoration: underline; }
+
+/* Alert */
+.alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-family: var(--font-ui);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alert-error {
+  background: var(--accent-red-dim);
+  border: 1px solid rgba(255,70,85,0.3);
+  color: var(--accent-red);
+}
+
+.alert-success {
+  background: var(--accent-dim);
+  border: 1px solid rgba(0,196,180,0.3);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
